@@ -1,0 +1,31 @@
+2025-02-14 21:34:04,507 - INFO - get logger name
+2025-02-14 21:34:04,508 - INFO - Main requests connection
+2025-02-14 21:34:04,534 - INFO - MAX connected successfully.
+2025-02-14 21:34:05,739 - INFO - debug mode disabled
+
+2025-02-14 21:34:05,946 - INFO - VERSION 13 RISE 5 FALL 10 NOISE 30 F 14000000.00 MAX 18300 HYST 1 MODE 0 STEP 3 t 1799 POT 85 POT2 100 T1 22.5 T2 OFF T3 OFF Prise 0 Srise 0 OUT 0..0/1 Pfall 0 Sfall 0 TC OFF TCpot OFF Tco [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] TP 1000 PileUp [] PileUpThr 8192
+
+2025-02-14 21:34:06,151 - INFO - Recording False
+2025-02-14 21:34:06,554 - INFO - -ok
+
+2025-02-14 21:35:08,518 - INFO - Requesting stop
+2025-02-14 21:35:08,920 - INFO - -ok
+
+2025-02-14 21:35:11,329 - INFO - Requesting spectrum
+2025-02-14 21:35:23,024 - INFO - Saving data to file /home/pi/data/2025-02-14/RawGSPEC2025-02-14_213404.csv
+2025-02-15 08:18:34,542 - INFO - get logger name
+2025-02-15 08:18:34,542 - INFO - Main requests connection
+2025-02-15 08:18:34,571 - INFO - MAX connected successfully.
+2025-02-15 08:18:35,777 - INFO - debug mode disabled
+
+2025-02-15 08:18:35,984 - INFO - VERSION 13 RISE 5 FALL 10 NOISE 30 F 14000000.00 MAX 18300 HYST 1 MODE 0 STEP 3 t 59 POT 85 POT2 100 T1 22.0 T2 OFF T3 OFF Prise 0 Srise 0 OUT 0..0/1 Pfall 0 Sfall 0 TC OFF TCpot OFF Tco [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] TP 1000 PileUp [] PileUpThr 8192
+
+2025-02-15 08:18:36,191 - INFO - Recording False
+2025-02-15 14:27:43,982 - INFO - get logger name
+2025-02-15 14:27:43,983 - INFO - Main requests connection
+2025-02-15 14:27:44,010 - INFO - MAX connected successfully.
+2025-02-15 14:27:45,216 - INFO - debug mode disabled
+
+2025-02-15 14:27:45,423 - INFO - VERSION 13 RISE 5 FALL 10 NOISE 30 F 14000000.00 MAX 18300 HYST 1 MODE 0 STEP 3 t 59 POT 85 POT2 100 T1 22.0 T2 OFF T3 OFF Prise 0 Srise 0 OUT 0..0/1 Pfall 0 Sfall 0 TC OFF TCpot OFF Tco [0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0] TP 1000 PileUp [] PileUpThr 8192
+
+2025-02-15 14:27:45,629 - INFO - Recording False
