@@ -22,7 +22,8 @@ total_time=0
 filename = ""
 recordingTime=60
 
-
+#
+#
 # baudRate array defined in globalVars
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
