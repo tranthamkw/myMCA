@@ -23,7 +23,6 @@ filename = ""
 recordingTime=60
 
 #
-#
 # baudRate array defined in globalVars
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
@@ -169,7 +168,6 @@ myReturnByte=readDevice(nano,5,dt)
 while len(myReturnByte)>0:
 	sys.stdout.write(".")
 	sys.stdout.flush()
-#	print(len(myReturnByte))
 	for rx_byte in myReturnByte:
 		rawData.append(rx_byte)
 	myReturnByte=readDevice(nano,5,dt)

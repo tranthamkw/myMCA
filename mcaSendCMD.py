@@ -18,7 +18,7 @@ myInfo="test"
 returnmessage=""
 dt=0.4
 total_time=0
-filename = ""
+command = ""
 recordingTime=1800
 
 
@@ -37,6 +37,20 @@ from commonFunctions import(
     readDevice,
     decodeResponse)
 
+def mcaRecording():
+    global recording
+    error=True
+    #print("Requesting working status...")
+    sendCommand('-stt',nano)
+    myReturnByte=readDevice(nano,30,0.2)
+    returnmessage=decodeResponse(myReturnByte)
+    if re.search('stopped', returnmessage):
+        recording=False
+        error=False
+    if re.search('collecting',returnmessage):
+        recording=True
+        error=False
+    return error
 
 #															#
 # ++++++++++++++++++++    START MAIN +++++++++++++++++++++++#
@@ -44,10 +58,10 @@ from commonFunctions import(
 
 
 logging.basicConfig(
-    filename="/home/pi/data/temperaturelog.log",
+    filename="/home/pi/data/mcalog.csv",
     level=logging.INFO,
     filemode='a',
-    format='%(asctime)s - %(levelname)s - %(message)s'
+    format='%(asctime)s, %(levelname)s, %(message)s'
 )
 
 logger = logging.getLogger(__name__)
@@ -57,7 +71,7 @@ logger = logging.getLogger(__name__)
 nano = port.connectdevice(None,globalVars.baudRate[br])
 
 if not nano:
-	logger.info("Failed to connect to MAX.")
+	logger.error("Failed to connect to MAX.")
 	sys.exit(0)
 else:
 	nano.flushInput()
@@ -65,27 +79,32 @@ else:
 #	print("Connected")
 #	logger.info("MAX connected successfully.")
 
+
+command=sys.argv[1]
+
 #print("Sending mode 0...")
+logger.info("send mode 0")
 sendCommand('-mode 0',nano)
 myReturnByte=readDevice(nano,60,0.2)
 returnmessage=decodeResponse(myReturnByte)
-#logger.info(returnmessage)
+logger.info(returnmessage)
 
-#print("Requesting unit information...")
+#get recording status
+#mcaRecording()
+
+print("Requesting unit information...")
 sendCommand('-inf',nano)
 myReturnByte=readDevice(nano,30,0.2)
 returnmessage=decodeResponse(myReturnByte)
-#logger.info(returnmessage)
-if re.search('VERSION', returnmessage):
-	myInfo=returnmessage
-	info_dict = parse_device_info(myInfo)
-#	print("MAX Version:\t\t{}".format(info_dict.get('VERSION')))
-#	nanoTime = info_dict.get('t')
-#	print("Temperature:\t\t{} C".format(info_dict.get('T1')))
-	logger.info("Temperature:\t\t{} C".format(info_dict.get('T1')))
-else:
-	logger.info("Invalid response from device information")
+logger.info(returnmessage)
 
+time.sleep(0.1)
+print("Sending command {}".format(command))
+sendCommand(command,nano)
+myReturnByte=readDevice(nano,30,0.2)
+returnmessage=decodeResponse(myReturnByte)
+logger.info(returnmessage)
+print(returnmessage)
 
 time.sleep(0.1)
 
