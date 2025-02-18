@@ -17,7 +17,7 @@ recording=False
 myInfo="test"
 returnmessage=""
 rawData=[]
-dt=0.4
+dt=0.05
 total_time=0
 filename = ""
 recordingTime=60
@@ -27,7 +27,7 @@ recordingTime=60
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
 
-br=0 # this setting must match the speed last set by setnanospeed.py
+br=2 # this setting must match the speed last set by setnanospeed.py
 
 import globalVars
 
@@ -125,7 +125,7 @@ if not recording:
 
 	myReturnByte=readDevice(nano,5,dt)
 	while len(myReturnByte)>0:
-		sys.stdout.write(".")
+		sys.stdout.write(".{} bytes".format(len(myReturnByte)))
 		sys.stdout.flush()
 		for rx_byte in myReturnByte:
 			rawData.append(rx_byte)

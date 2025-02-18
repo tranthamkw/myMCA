@@ -26,7 +26,7 @@ recordingTime=1800
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
 
-br=0  # this must match the speed last set by setnanospeed.py
+br=2  # this must match the speed last set by setnanospeed.py
 
 import globalVars
 
@@ -58,7 +58,7 @@ def mcaRecording():
 
 
 logging.basicConfig(
-    filename="/home/pi/data/mcalog.csv",
+    filename="/home/pi/data/mcaCMDlog.csv",
     level=logging.INFO,
     filemode='a',
     format='%(asctime)s, %(levelname)s, %(message)s'
@@ -82,24 +82,28 @@ else:
 
 command=sys.argv[1]
 
-#print("Sending mode 0...")
-logger.info("send mode 0")
+print("Sending mode 0...")
+#logger.info("send mode 0")
 sendCommand('-mode 0',nano)
 myReturnByte=readDevice(nano,60,0.2)
 returnmessage=decodeResponse(myReturnByte)
-logger.info(returnmessage)
+#logger.info(returnmessage)
 
 #get recording status
 #mcaRecording()
-
+"""
 print("Requesting unit information...")
 sendCommand('-inf',nano)
 myReturnByte=readDevice(nano,30,0.2)
 returnmessage=decodeResponse(myReturnByte)
-logger.info(returnmessage)
+print(returnmessage)
+#logger.info(returnmessage)
+"""
+
 
 time.sleep(0.1)
 print("Sending command {}".format(command))
+logger.info("Send command {}".format(command))
 sendCommand(command,nano)
 myReturnByte=readDevice(nano,30,0.2)
 returnmessage=decodeResponse(myReturnByte)

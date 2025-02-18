@@ -18,7 +18,8 @@ returnMessage=""
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
 
-br=0
+br=3
+brNew=2
 
 import globalVars
 
@@ -94,9 +95,9 @@ elif re.search('collecting',returnmessage):
 	recording=True
 
 if not recording:
-	logger.info("set speed to {}".format(globalVars.baudRate[br]))
-	print("sending speed information {}".format(globalVars.baudRate[br]))
-	sendCommand('-spd {}'.format(globalVars.baudRate[br]),nano)
+	logger.info("set speed to {}".format(globalVars.baudRate[brNew]))
+	print("sending speed information {}".format(globalVars.baudRate[brNew]))
+	sendCommand('-spd {}'.format(globalVars.baudRate[brNew]),nano)
 # nothing is returned from setting the speed
 else:
 	print("Device is recording. Cannot change speed. Recording\t{}".format(recording))

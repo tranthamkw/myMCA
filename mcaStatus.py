@@ -24,7 +24,7 @@ recordingTime=1800
 # baudRate = [38400, 115200, 460800, 600000, 921600]
 # select rate with index br
 
-br=0  # this must match the speed last set by setnanospeed.py
+br=2  # this must match the speed last set by setnanospeed.py
 
 import globalVars
 
