@@ -11,7 +11,6 @@ except Exception as e:
 	print("path {} raises exception {}".format(pathname,e))
 	os._exit(-1)
 
-
 pattern = "Raw"
 newfilename=""
 print(len(myfiles))
