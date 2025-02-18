@@ -5,8 +5,12 @@ import re
 
 pathname=sys.argv[1]
 
+try:
+	myfiles = os.listdir(pathname)
+except Exception as e:
+	print("path {} raises exception {}".format(pathname,e))
+	os._exit(-1)
 
-myfiles = os.listdir(pathname)
 
 pattern = "Raw"
 newfilename=""
