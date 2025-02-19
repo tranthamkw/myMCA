@@ -3,6 +3,11 @@ import sys
 import re
 
 
+from decodeRawGSPEC import(processRaw)
+
+
+
+
 pathname=sys.argv[1]
 
 try:
@@ -19,6 +24,7 @@ for i in range(len(myfiles)):
 	if re.match(pattern,myfiles[i]):
 		newfilename=os.path.join(pathname,myfiles[i])
 		print(newfilename)
+		processRaw(newfilename)
 
 
 
