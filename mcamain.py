@@ -53,6 +53,8 @@ if __name__ == '__main__':
 	time.sleep(1)
 	shproto.dispatcher.process_03("-sto")
 	time.sleep(1)
+	shproto.dispatcher.process_03("-rst")
+	time.sleep(1)
 	shproto.dispatcher.process_03("-sta {} -r".format(collecttime))
 	time.sleep(1)
 	if shproto.dispatcher.spec_stopflag == 0:
@@ -61,8 +63,13 @@ if __name__ == '__main__':
 
 	while True:
 		if (shproto.dispatcher.total_time > (collecttime-2)):  #total time starts at 0.  so sending -sta 1800 the time increments from 0 to 1799
+
 			print("sending stop")
 			shproto.dispatcher.spec_stop()
+			time.sleep(1)
+			print("Updating inf")
+			shproto.dispatcher.process_03("-inf")
+			time.sleep(1)
 			print("collecting data and saving to file " + spec_file)
 			spec = threading.Thread(target=shproto.dispatcher.process_01, args=(spec_file,))
 			time.sleep(5)
