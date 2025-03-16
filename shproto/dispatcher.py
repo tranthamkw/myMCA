@@ -259,6 +259,8 @@ def process_01(filename):
 
 	if shproto.dispatcher.csv_out:
 		print("Writing file")
+		with shproto.dispatcher.histogram_lock:
+			histogram = shproto.dispatcher.histogram
 		with open(filename, "w") as fd:
 			if shproto.dispatcher.interspec_csv:
 				fd.writelines("calibcoeff : a={} b={} c={} d={}\n".format(

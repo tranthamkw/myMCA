@@ -22,8 +22,8 @@ if __name__ == '__main__':
 		collecttime = args.time
 		if (collecttime<10):
 			collecttime=10
-		if (collecttime>36000):
-			collecttime=36000
+		if (collecttime>1800):
+			collecttime=1800
 		print("Collection time {}".format(collecttime))
 	else:
 		print("Usage:  mcamain.py -t [x] where [x] is the data collection time")
@@ -54,6 +54,7 @@ if __name__ == '__main__':
 	shproto.dispatcher.process_03("-sto")
 	time.sleep(1)
 	shproto.dispatcher.process_03("-sta {} -r".format(collecttime))
+	time.sleep(1)
 	if shproto.dispatcher.spec_stopflag == 0:
 		print("Collecting thread allready running")
 	spec.start()
@@ -62,9 +63,10 @@ if __name__ == '__main__':
 		if (shproto.dispatcher.total_time > (collecttime-2)):  #total time starts at 0.  so sending -sta 1800 the time increments from 0 to 1799
 			print("sending stop")
 			shproto.dispatcher.spec_stop()
+			print("collecting data and saving to file " + spec_file)
 			spec = threading.Thread(target=shproto.dispatcher.process_01, args=(spec_file,))
-			time.sleep(1)
+			time.sleep(5)
 			shproto.dispatcher.stop()
 			print("done")
 			exit(0)
-		time.sleep(3)
+		time.sleep(5)
